@@ -5,80 +5,94 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-  Rigidbody2D _rb2d;
+  public Rigidbody2D rb;
 
-  Animator _animator;
+  public Animator animator;
 
   public float speed = 5f;
 
   public float jumpHeight = 20f;
 
-  public bool isJumping = false;
+  bool _isJumping = false;
 
-  public bool facingRight = true;
+  bool _isFacingRight = true;
 
-  // Start is called before the first frame update
-  void Start()
-  {
-    _rb2d = GetComponentInChildren<Rigidbody2D>();
-    _animator = GetComponentInChildren<Animator>();
-  }
+  public Vector2 startPosition;
 
   // Update is called once per frame
   void Update()
   {
-    var moveHorizontal = Input.GetAxisRaw("Horizontal");
-    _animator.SetFloat("Horizontal", Mathf.Abs(moveHorizontal));
-    var movement = new Vector2(moveHorizontal * speed, _rb2d.velocity.y);
+    float moveHorizontal = GetMovement();
 
-    _rb2d.velocity = movement;
+    animator.SetBool("isJumping", _isJumping);
 
-    _animator.SetBool("isJumping", isJumping);
+    CheckFlip(moveHorizontal);
 
-    if (moveHorizontal > 0 && !facingRight)
-    {
-      Flip();
-    }
-    else if (moveHorizontal < 0 && facingRight)
-    {
-      Flip();
-    }
-
-    if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+    if (Input.GetKeyDown(KeyCode.Space) && !_isJumping)
     {
       Jump();
     }
 
-    if (_rb2d.velocity.y < -0.01)
+    if (rb.velocity.y < -0.01)
     {
-      _animator.SetBool("isFalling", true);
+      animator.SetBool("isFalling", true);
     }
-
-  }
-
-  private void Jump()
-  {
-    _rb2d.velocity = Vector2.zero;
-    isJumping = true;
-    _animator.SetBool("isFalling", false);
-    _rb2d.AddForce(Vector2.up * jumpHeight);
   }
 
   void OnCollisionEnter2D(Collision2D collider)
   {
     if (collider.gameObject.tag == "Ground")
     {
-      isJumping = false;
-      //   _animator.SetBool("isJumping", isJumping);
+      _isJumping = false;
     }
   }
 
+  private float GetMovement()
+  {
+    var moveHorizontal = Input.GetAxisRaw("Horizontal");
+    animator.SetFloat("Horizontal", Mathf.Abs(moveHorizontal));
+    var movement = new Vector2(moveHorizontal * speed, rb.velocity.y);
+
+    rb.velocity = movement;
+    return moveHorizontal;
+  }
+
+  private void CheckFlip(float moveHorizontal)
+  {
+    if (moveHorizontal > 0 && !_isFacingRight)
+    {
+      Flip();
+    }
+    else if (moveHorizontal < 0 && _isFacingRight)
+    {
+      Flip();
+    }
+  }
+
+  public void Jump()
+  {
+    rb.velocity = Vector2.zero;
+    _isJumping = true;
+    animator.SetBool("isFalling", false);
+    rb.AddForce(Vector2.up * jumpHeight);
+  }
+
+
   void Flip()
   {
-    facingRight = !facingRight;
+    _isFacingRight = !_isFacingRight;
     Vector2 theScale = transform.localScale;
     theScale.x *= -1;
     transform.localScale = theScale;
+  }
+
+  public void TakeHit(GameObject source, float damage)
+  {
+    if (GameManager.Instance.currentHealth > 0)
+    {
+      GameManager.Instance.currentHealth -= damage;
+      animator.Play("Hit");
+    }
   }
 
 }

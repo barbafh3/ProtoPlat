@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6117556064349386123}
   - component: {fileID: 4611803618334141292}
   - component: {fileID: 2869425600810987197}
-  - component: {fileID: 5680343405476888838}
   - component: {fileID: 8300652968899295992}
   - component: {fileID: 1487888100623605563}
+  - component: {fileID: 8036908653378883244}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5035331262572627751}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4466205, y: 1.7637806, z: -0.36035156}
+  m_LocalPosition: {x: 1.4466205, y: 1.762, z: -0.36035156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -105,22 +105,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &5680343405476888838
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5035331262572627751}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.031279087, y: -0.17724824}
-  m_Size: {x: 0.55163753, y: 0.6767535}
-  m_Direction: 0
 --- !u!95 &8300652968899295992
 Animator:
   serializedVersion: 3
@@ -152,7 +136,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34f59b2a5cf8254e8a8470d7bea40f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 2869425600810987197}
+  animator: {fileID: 8300652968899295992}
   speed: 5
-  jumpHeight: 450
-  isJumping: 0
-  facingRight: 1
+  jumpHeight: 500
+  startPosition: {x: 0, y: 0}
+--- !u!70 &8036908653378883244
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5035331262572627751}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.023507059, y: -0.22}
+  m_Size: {x: 0.49152696, y: 0.5554663}
+  m_Direction: 0
