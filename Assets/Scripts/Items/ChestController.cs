@@ -6,6 +6,9 @@ public class ChestController : MonoBehaviour
 {
 
   bool _isEmpty = false;
+
+  public Item item;
+
   void OnTriggerStay2D(Collider2D col)
   {
     if (Input.GetKeyDown(KeyCode.E))

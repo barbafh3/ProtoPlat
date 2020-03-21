@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6723123777866783398}
   - component: {fileID: 4364887016466640023}
   - component: {fileID: 2653716171593043020}
-  - component: {fileID: 8554037696509287513}
+  - component: {fileID: 2406806551355388168}
   m_Layer: 0
   m_Name: Possum
   m_TagString: Enemy
@@ -50,6 +50,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -152,7 +153,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08415443, y: -0.034190178}
+  m_Offset: {x: -0.08415443, y: 0.024041384}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -163,10 +164,10 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.43486726, y: 0.03895092}
+  m_Size: {x: 0.43486726, y: 0.02497536}
   m_EdgeRadius: 0
---- !u!60 &8554037696509287513
-PolygonCollider2D:
+--- !u!70 &2406806551355388168
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -178,28 +179,6 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.125, y: 0.875}
-    newSize: {x: 1.125, y: 0.875}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.13824326, y: -0.05670488}
-      - {x: -0.30805635, y: -0.058425248}
-      - {x: -0.3279326, y: -0.05595267}
-      - {x: -0.40362632, y: -0.03334278}
-      - {x: -0.44995642, y: -0.12859207}
-      - {x: -0.4448408, y: -0.30508655}
-      - {x: -0.39086676, y: -0.39145947}
-      - {x: 0.15027368, y: -0.39174777}
-      - {x: 0.20830768, y: -0.35080916}
-      - {x: 0.23231894, y: -0.26134384}
-      - {x: 0.23566294, y: -0.029689193}
-      - {x: 0.18242925, y: -0.054659188}
-      - {x: 0.13756561, y: -0.055905044}
+  m_Offset: {x: -0.074445456, y: -0.19227841}
+  m_Size: {x: 0.7434766, y: 0.40360102}
+  m_Direction: 1

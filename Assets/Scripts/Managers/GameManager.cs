@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     }
     _instance = this;
     currentHealth = _defaultHealth;
+    // inventory = new List<Item>();
   }
 
   void OnDisable()
